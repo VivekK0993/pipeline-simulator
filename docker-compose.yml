@@ -1,0 +1,20 @@
+services:
+  buildservice:
+    build: .
+    command: bash /challenge_3/pipeline-simulator/build.sh
+    environment:
+      - VERSION=v2.0
+      - APP_NAME=PipelineApp
+
+  testservice:
+    build: .
+    command: bash /challenge_3/pipeline-simulator/pipeline.sh
+    environment:
+      - APP_NAME=PipelineApp
+
+  deployservice:
+    build: .
+    command: bash /challenge_3/pipeline-simulator/deploy.sh
+    environment:
+      - APP_NAME=PipelineApp
+      - ENVIRONMENT=production
